@@ -9,7 +9,7 @@ describe('Test todo action creators', () => {
             .toEqual({
                 type: type.INSERT_TODO,
                 payload: {
-                    text: undefined,
+                    text: '',
                 },
             });
     });
