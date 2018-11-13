@@ -4,7 +4,7 @@ export const actionTypes = {
     INSERT_TODO,
 };
 
-export const insertTodo = text => ({
+export const insertTodo = (text = '') => ({
     type: INSERT_TODO,
     payload: {
         text,
