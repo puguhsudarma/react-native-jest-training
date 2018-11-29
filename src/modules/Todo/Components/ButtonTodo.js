@@ -10,12 +10,13 @@ import { styles as s } from 'react-native-style-tachyons';
 
 type ButtonTodoPropTypes = {
     action: () => void,
+    disabled: boolean,
 };
 
 const ButtonTodo = (props: ButtonTodoPropTypes) => {
     return (
         <View>
-            <TouchableHighlight onPress={props.action}>
+            <TouchableHighlight onPress={props.action} disabled={props.disabled}>
                 <View style={[s.aic, s.jcc, {
                     padding: 10,
                     backgroundColor: 'blue',

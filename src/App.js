@@ -1,13 +1,12 @@
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducers from './reducers';
+import { store } from './configs';
 import TodoContainer from './modules/Todo/Todo.Container';
 
-const store = createStore(reducers);
+const store = store();
 
 export default () => {
     return (
-        <Provider>
+        <Provider store={store}>
             <TodoContainer />
         </Provider>
     );

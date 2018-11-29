@@ -6,12 +6,18 @@ export const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case type.INSERT_TODO:
+        case type.GET_TODO_SUCCESS:
+            return {
+                ...state,
+                todos: action.payload.todos,
+            };
+
+        case type.INSERT_TODO_SUCCESS:
             return {
                 ...state,
                 todos: [
                     ...state.todos,
-                    action.payload.text,
+                    action.payload.todo,
                 ],
             };
 

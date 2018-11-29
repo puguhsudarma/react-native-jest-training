@@ -8,6 +8,7 @@ import {
 
 type TextInputTodoPropTypes = {
     refTextInput: (ref: any) => void,
+    editable: boolean,
     value: string,
     onChangeText: (text: string) => void,
     onSubmitEditing: () => void,
@@ -18,6 +19,7 @@ const TextInputTodo = (props: TextInputTodoPropTypes) => {
         <View style={{ height: 50 }}>
             <TextInput
                 ref={props.refTextInput}
+                editable={props.editable}
                 value={props.value}
                 onChangeText={props.onChangeText}
                 onSubmitEditing={props.onSubmitEditing}
