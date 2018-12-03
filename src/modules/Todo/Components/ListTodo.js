@@ -4,16 +4,27 @@ import React from 'react';
 import {
     View,
     Text,
+    FlatList,
+    ScrollView,
 } from 'react-native';
 import { styles as s } from 'react-native-style-tachyons';
 
 type ListTodoPropTypes = {
-    todos: string[],
+    todoComplete: [{
+        todo: string,
+        isComplete: boolean,
+    }],
+    todoInComplete: [{
+        todo: string,
+        isComplete: boolean,
+    }],
 };
 
 const ListTodo = (props: ListTodoPropTypes) => {
     return (
-        <View style={[s.aifs, s.jcc, { marginTop: 30 }]}>
+        <ScrollView
+            contentContainerStyle={[s.aifs, s.jcc, { marginTop: 30 }]}
+        >
             <Text style={{
                 fontSize: 20,
                 fontWeight: '600',
@@ -21,22 +32,45 @@ const ListTodo = (props: ListTodoPropTypes) => {
                 textDecorationLine: 'underline',
                 color: '#000',
             }}>
-                {'TODO TODAY: '}
+                {'TODO TODAY COMPLETE: '}
             </Text>
             {
-                props.todos.map((todo) => {
+                props.todoComplete.map((todo) => {
                     return (
                         <Text key={todo} style={{
                             fontSize: 18,
                             fontWeight: '700',
                             color: '#000',
                         }}>
-                            {`- ${todo}`}
+                            {`- ${todo.todo}`}
                         </Text>
                     );
                 })
             }
-        </View>
+
+            <Text style={{
+                fontSize: 20,
+                fontWeight: '600',
+                textAlign: 'center',
+                textDecorationLine: 'underline',
+                color: 'red',
+            }}>
+                {'TODO TODAY INCOMPLETE: '}
+            </Text>
+            {
+                props.todoInComplete.map((todo) => {
+                    return (
+                        <Text key={todo} style={{
+                            fontSize: 18,
+                            fontWeight: '700',
+                            color: '#000',
+                        }}>
+                            {`- ${todo.todo}`}
+                        </Text>
+                    );
+                })
+            }
+        </ScrollView>
     );
 };
 

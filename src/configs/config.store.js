@@ -1,18 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogger } from 'redux-logger';
-import { createLogicMiddleware } from 'redux-logic';
 import rootReducer from '../reducers';
-import logic from '../logics';
 
-const dependencies = {
-    httpClient: axios,
-};
-
-const logicMiddleware = createLogicMiddleware(logic, dependencies);
-
-const middlewares = [
-    logicMiddleware,
-];
+const middlewares = [];
 
 // monitor redux action
 if (__DEV__) {

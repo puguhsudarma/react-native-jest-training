@@ -10,7 +10,7 @@ import { styles as s } from 'react-native-style-tachyons';
 
 type ButtonTodoPropTypes = {
     action: () => void,
-    disabled: boolean,
+    disabled?: boolean,
 };
 
 const ButtonTodo = (props: ButtonTodoPropTypes) => {
@@ -31,6 +31,10 @@ const ButtonTodo = (props: ButtonTodoPropTypes) => {
             </TouchableHighlight>
         </View>
     );
+};
+
+ButtonTodo.defaultProps = {
+    disabled: false,
 };
 
 export default ButtonTodo;

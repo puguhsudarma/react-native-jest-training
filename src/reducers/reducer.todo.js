@@ -1,23 +1,41 @@
 import { actionTypes as type } from '../actions/action.todo';
 
+const dummy = [
+    {
+        todo: 'Build PPT',
+        isComplete: true,
+    },
+    {
+        todo: 'Build APK',
+        isComplete: true,
+    },
+    {
+        todo: 'Deploy APK',
+        isComplete: true,
+    },
+    {
+        todo: 'Testing APK',
+        isComplete: false,
+    },
+];
+
 export const initialState = {
-    todos: [],
+    todos: [
+        ...dummy,
+    ],
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case type.GET_TODO_SUCCESS:
-            return {
-                ...state,
-                todos: action.payload.todos,
-            };
-
-        case type.INSERT_TODO_SUCCESS:
+        case type.INSERT_TODO:
             return {
                 ...state,
                 todos: [
                     ...state.todos,
-                    action.payload.todo,
+                    {
+                        todo: action.payload.todo,
+                        isComplete: false,
+                    }
                 ],
             };
 
