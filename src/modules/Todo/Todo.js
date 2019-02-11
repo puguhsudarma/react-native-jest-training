@@ -1,89 +1,67 @@
 // @flow
 
-import React, { Component } from 'react';
-import { SafeAreaView, View, ActivityIndicator } from 'react-native';
-import { styles as s } from 'react-native-style-tachyons';
-import TextInputTodo from './Components/TextInputTodo';
-import ButtonTodo from './Components/ButtonTodo';
-import ListTodo from './Components/ListTodo';
+import React, { Component } from "react";
+import { SafeAreaView, View, ActivityIndicator } from "react-native";
+import { styles as s } from "react-native-style-tachyons";
+import TextInputTodo from "./Components/TextInputTodo";
+import ButtonTodo from "./Components/ButtonTodo";
+import ListTodo from "./Components/ListTodo";
 
 type proptypes = {
-    todos: [{
-        todo: string,
-        isComplete: boolean,
-    }],
-    insertTodo: (text: string) => void,
+  todoComplete: Array<{
+    todo: string,
+    isComplete: boolean
+  }>,
+  todoIncomplete: Array<{
+    todo: string,
+    isComplete: boolean
+  }>,
+  insertTodo: (text: string) => void
 };
 
 type statetypes = {
-    text: string,
-    todoComplete: object[],
-    todoIncomplete: object[],
+  text: string
 };
 
 export default class Todo extends Component<proptypes, statetypes> {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            text: '',
-            todoComplete: [],
-            todoIncomplete: [],
-        };
+    this.state = {
+      text: ""
+    };
 
-        this._refTextInput = null;
-        this._extractTodos = this._extractTodos.bind(this);
-        this._handleRefTextInput = this._handleRefTextInput.bind(this);
-        this._handleAction = this._handleAction.bind(this);
-        this._onChangeText = this._onChangeText.bind(this);
+    this._handleAction = this._handleAction.bind(this);
+    this._onChangeText = this._onChangeText.bind(this);
+  }
+
+  _handleAction() {
+    if (this.state.text.length >= 0) {
+      this.props.insertTodo(this.state.text);
+      this.setState({ text: "" });
     }
+  }
 
-    componentDidMount() {
-        this._extractTodos();
-    }
+  _onChangeText(text) {
+    this.setState({ text });
+  }
 
-    _extractTodos() {
-        this.setState((prevState) => {
-            return {
-                ...prevState,
-                todoComplete: this.props.todos.filter(({ isComplete }) => isComplete),
-                todoIncomplete: this.props.todos.filter(({ isComplete }) => !isComplete),
-            };
-        });
-    }
+  render() {
+    return (
+      <SafeAreaView style={[s.flx_i, { padding: 10 }]}>
+        <TextInputTodo
+          value={this.state.text}
+          onChangeText={this._onChangeText}
+          onSubmitEditing={this._handleAction}
+        />
 
-    _handleRefTextInput(ref) {
-        this._refTextInput = ref;
-    }
+        <ButtonTodo action={this._handleAction} />
 
-    _handleAction() {
-        if (this.state.text.length >= 0) {
-            this.props.insertTodo(this.state.text);
-            this.setState({ text: '' });
-        }
-    }
-
-    _onChangeText(text) {
-        this.setState({ text });
-    }
-
-    render() {
-        return (
-            <SafeAreaView style={[s.flx_i, { padding: 10 }]}>
-                <TextInputTodo
-                    refTextInput={this._handleRefTextInput}
-                    value={this.state.text}
-                    onChangeText={this._onChangeText}
-                    onSubmitEditing={this._handleAction}
-                />
-
-                <ButtonTodo action={this._handleAction} />
-
-                <ListTodo
-                    todoComplete={this.state.todoComplete}
-                    todoInComplete={this.state.todoIncomplete}
-                />
-            </SafeAreaView>
-        );
-    }
+        <ListTodo
+          todoComplete={this.props.todoComplete}
+          todoInComplete={this.props.todoIncomplete}
+        />
+      </SafeAreaView>
+    );
+  }
 }

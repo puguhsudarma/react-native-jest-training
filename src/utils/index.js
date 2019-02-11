@@ -1,5 +1,3 @@
-import toast from './toast';
+import toast from "./toast";
 
-export {
-    toast,
-};
+export { toast };
