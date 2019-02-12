@@ -16,7 +16,8 @@ type proptypes = {
     todo: string,
     isComplete: boolean
   }>,
-  insertTodo: (text: string) => void
+  insertTodo: (text: string) => void,
+  toggleTodo: (id: number) => void,
 };
 
 type statetypes = {
@@ -60,6 +61,7 @@ export default class Todo extends Component<proptypes, statetypes> {
         <ListTodo
           todoComplete={this.props.todoComplete}
           todoInComplete={this.props.todoIncomplete}
+          toggleTodo={this.props.toggleTodo}
         />
       </SafeAreaView>
     );

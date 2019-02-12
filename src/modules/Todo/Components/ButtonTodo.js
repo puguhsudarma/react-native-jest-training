@@ -1,8 +1,9 @@
 // @flow
 
 import React from "react";
-import { View, Text, TouchableHighlight } from "react-native";
+import { View, Text } from "react-native";
 import { styles as s } from "react-native-style-tachyons";
+import { UniButton } from "../../_global";
 
 type ButtonTodoPropTypes = {
   action: () => void,
@@ -12,7 +13,7 @@ type ButtonTodoPropTypes = {
 const ButtonTodo = (props: ButtonTodoPropTypes) => {
   return (
     <View>
-      <TouchableHighlight onPress={props.action} disabled={props.disabled}>
+      <UniButton action={props.action} disabled={props.disabled}>
         <View
           style={[
             s.aic,
@@ -32,7 +33,7 @@ const ButtonTodo = (props: ButtonTodoPropTypes) => {
             {"Simpan"}
           </Text>
         </View>
-      </TouchableHighlight>
+      </UniButton>
     </View>
   );
 };

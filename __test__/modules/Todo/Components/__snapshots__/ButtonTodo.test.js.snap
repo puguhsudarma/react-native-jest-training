@@ -11,7 +11,12 @@ exports[`Test Button Todo Render Render deep button todo correctly 1`] = `
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
-    style={null}
+    style={
+      Object {
+        "borderRadius": 0,
+        "opacity": 1,
+      }
+    }
   >
     <View
       style={
@@ -38,4 +43,44 @@ exports[`Test Button Todo Render Render deep button todo correctly 1`] = `
     </View>
   </View>
 </View>
+`;
+
+exports[`Test Button Todo Render Render shallow button todo correctly 1`] = `
+<Component>
+  <UniButton
+    action={[Function]}
+    activeOpacity={0.5}
+    borderRadius={0}
+    borderless={false}
+    disabled={false}
+    foregroundRipple={false}
+    highlightColor="rgba(255,255,255,0.15)"
+    noDebounce={false}
+    useTouchableHightlight={false}
+  >
+    <Component
+      style={
+        Array [
+          undefined,
+          undefined,
+          Object {
+            "backgroundColor": "blue",
+            "padding": 10,
+          },
+        ]
+      }
+    >
+      <Component
+        style={
+          Object {
+            "fontWeight": "600",
+            "textAlign": "center",
+          }
+        }
+      >
+        Simpan
+      </Component>
+    </Component>
+  </UniButton>
+</Component>
 `;

@@ -1,7 +1,7 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import Todo from "./Todo";
-import { insertTodo } from "../../actions/action.todo";
+import { insertTodo, toggleTodo } from "../../actions/action.todo";
 import {
   selectCompleteTodo,
   selectInCompleteTodo
@@ -15,7 +15,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      insertTodo
+      insertTodo,
+      toggleTodo,
     },
     dispatch
   );

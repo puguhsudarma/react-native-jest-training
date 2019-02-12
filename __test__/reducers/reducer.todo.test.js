@@ -18,9 +18,14 @@ describe('Test todo reducer', () => {
         }))
             .toEqual({
                 ...initialState,
+                counter: 2,
                 todos: [
                     ...initialState.todos,
-                    'Some Text',
+                    {
+                        id: 1,
+                        todo: 'Some Text',
+                        isComplete: false,
+                    },
                 ],
             });
     });
