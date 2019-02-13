@@ -11,6 +11,7 @@
     "axios": "^0.18.0",
     "lodash": "^4.17.11",
     "react": "16.5.0",
+    "react-dom": "16",
     "react-native": "0.57.1",
     "react-native-style-tachyons": "^4.0.0",
     "react-redux": "^5.1.1",
@@ -22,8 +23,8 @@
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.7.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.47.0",
     "react-test-renderer": "16.5.0"
@@ -32,6 +33,7 @@
     "preset": "react-native",
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
-    }
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js"
   }
 }
